@@ -6,6 +6,21 @@ import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import * as dotenv from 'dotenv';
 
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  server: {
+    // Railway / Vercel jaise platforms ke liye
+    // warna "Blocked request. This host is not allowed" aata hai
+    allowedHosts: "all"
+  },
+
+  preview: {
+    // production preview ke time bhi allow rahe
+    allowedHosts: "all"
+  }
+});
+
 // Load environment variables from multiple files
 dotenv.config({ path: '.env.local' });
 dotenv.config({ path: '.env' });
